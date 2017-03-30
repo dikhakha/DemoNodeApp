@@ -10,5 +10,5 @@ gulp.task("deploy", function () {
 const fs = require('fs');
 
 gulp.task('default', function () {
-    //do no(ta)thing
+    console.log("Executing Gulp default task");
 });
