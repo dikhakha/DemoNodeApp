@@ -30,11 +30,10 @@ steps:
     replaceExistingArchive: true
     
 - task: AzureWebApp@1
-  displayName: 'Azure Web App Deploy: expressappyaml'
+  displayName: 'Azure Web App Deploy'
   inputs:
-    azureSubscription: 'c00d16c7-6c1f-4c03-9be1-6934a4c49682'
-    appType: webAppLinux
+    azureSubscription: '22fbc8a2-8b46-4b9c-9134-00129456d419'
+    appType: webApp
     appName: 'dikhakha3424'
     runtimeStack: 'NODE|10.10'
     package: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
-    startUpCommand: 'npm run start'
