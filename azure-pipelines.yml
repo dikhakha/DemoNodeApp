@@ -35,5 +35,4 @@ steps:
     azureSubscription: '22fbc8a2-8b46-4b9c-9134-00129456d419'
     appType: webApp
     appName: 'dikhakha3424'
-    runtimeStack: 'NODE|10.10'
     package: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
