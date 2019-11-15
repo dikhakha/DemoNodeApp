@@ -1,5 +1,5 @@
-# Node.js with gulp on Windows Web App
-# Build a Node.js project using the gulp task runner and deploy it to Azure as a Windows web app.
+# Node.js with gulp on Linux Web App
+# Build a Node.js project using the gulp task runner and deploy it to Azure as a Linux web app.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
@@ -8,10 +8,10 @@ trigger:
 
 variables:
   # Azure Resource Manager connection
-  azureSubscription: '292f72ba-b417-4dce-9dba-9d0a735ee680'
+  azureSubscription: 'edaa6a84-49dd-4058-a000-fda8bbdffbb9'
 
   # Web app name
-  webAppName: 'dikhakha-demmo2'
+  webAppName: 'dikhakha-linux-simple3'
 
   # Working Directory
   workingDirectory: ''
@@ -23,7 +23,7 @@ stages:
   - job: BuildJob
     displayName: Build
     pool:
-      vmImage: 'vs2017-win2016'
+      vmImage: 'ubuntu-latest'
 
     steps:
     - task: NodeTool@0
@@ -57,7 +57,7 @@ stages:
   - deployment: Deploy
     environment: 'development'
     pool:
-      vmImage: 'vs2017-win2016'
+      vmImage: 'ubuntu-latest'
 
     strategy:
       runOnce:
@@ -67,6 +67,7 @@ stages:
             displayName: 'Azure Web App Deploy'
             inputs:
               azureSubscription: $(azureSubscription)
-              appType: webApp
+              appType: webAppLinux
               appName: $(webAppName)
+              runtimeStack: 'NODE|10.10'
               package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
